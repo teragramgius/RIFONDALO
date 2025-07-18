@@ -1,0 +1,386 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Napoli Sand Color Palette */
+  --color-sand: #E8DDD4;
+  --color-sand-light: #F5F1EC;
+  --color-sand-dark: #D4C7B8;
+  --color-navy: #1B365D;
+  --color-navy-deep: #0F2A44;
+  --color-navy-light: #2A4A73;
+  --color-orange: #D4A574;
+  --color-orange-warm: #E6B887;
+  --color-orange-deep: #B8935F;
+  --color-white: #FFFFFF;
+  --color-gray-cool: #718096;
+  --color-gray-dark: #2D3748;
+  
+  /* Theme colors mapped to Napoli palette */
+  --color-background: var(--color-sand-light);
+  --color-foreground: var(--color-navy-deep);
+  --color-card: var(--color-white);
+  --color-card-foreground: var(--color-navy-deep);
+  --color-popover: var(--color-white);
+  --color-popover-foreground: var(--color-navy-deep);
+  --color-primary: var(--color-navy);
+  --color-primary-foreground: var(--color-white);
+  --color-secondary: var(--color-sand);
+  --color-secondary-foreground: var(--color-navy-deep);
+  --color-muted: var(--color-sand);
+  --color-muted-foreground: var(--color-gray-cool);
+  --color-accent: var(--color-orange);
+  --color-accent-foreground: var(--color-navy-deep);
+  --color-destructive: #E53E3E;
+  --color-border: var(--color-sand-dark);
+  --color-input: var(--color-white);
+  --color-ring: var(--color-orange);
+}
+
+:root {
+  --radius: 0.625rem;
+  
+  /* Custom Napoli Sand Variables */
+  --sand: #E8DDD4;
+  --sand-light: #F5F1EC;
+  --sand-dark: #D4C7B8;
+  --navy: #1B365D;
+  --navy-deep: #0F2A44;
+  --navy-light: #2A4A73;
+  --orange: #D4A574;
+  --orange-warm: #E6B887;
+  --orange-deep: #B8935F;
+  --white: #FFFFFF;
+  --gray-cool: #718096;
+  --gray-dark: #2D3748;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-sand-light text-navy-deep;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+/* Custom Napoli Sand Theme Classes */
+.bg-sand { background-color: var(--sand); }
+.bg-sand-light { background-color: var(--sand-light); }
+.bg-sand-dark { background-color: var(--sand-dark); }
+.bg-navy { background-color: var(--navy); }
+.bg-navy-deep { background-color: var(--navy-deep); }
+.bg-navy-light { background-color: var(--navy-light); }
+.bg-orange { background-color: var(--orange); }
+.bg-orange-warm { background-color: var(--orange-warm); }
+.bg-orange-deep { background-color: var(--orange-deep); }
+
+.text-sand { color: var(--sand); }
+.text-sand-light { color: var(--sand-light); }
+.text-sand-dark { color: var(--sand-dark); }
+.text-navy { color: var(--navy); }
+.text-navy-deep { color: var(--navy-deep); }
+.text-navy-light { color: var(--navy-light); }
+.text-orange { color: var(--orange); }
+.text-orange-warm { color: var(--orange-warm); }
+.text-orange-deep { color: var(--orange-deep); }
+
+.border-sand { border-color: var(--sand); }
+.border-sand-dark { border-color: var(--sand-dark); }
+.border-navy { border-color: var(--navy); }
+.border-orange { border-color: var(--orange); }
+
+/* Gradient backgrounds */
+.bg-gradient-napoli {
+  background: linear-gradient(135deg, var(--sand-light), var(--sand));
+}
+
+.bg-gradient-navy {
+  background: linear-gradient(135deg, var(--navy-deep), var(--navy));
+}
+
+.bg-gradient-orange {
+  background: linear-gradient(135deg, var(--orange), var(--orange-warm));
+}
+
+/* Text gradients */
+.text-gradient-napoli {
+  background: linear-gradient(135deg, var(--navy), var(--orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-warm {
+  background: linear-gradient(135deg, var(--orange), var(--orange-warm));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Custom animations */
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float-gentle {
+  animation: float-gentle 4s ease-in-out infinite;
+}
+
+@keyframes pulse-orange {
+  0%, 100% { 
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(212, 165, 116, 0.3);
+  }
+  50% { 
+    opacity: 0.8;
+    box-shadow: 0 0 30px rgba(212, 165, 116, 0.5);
+  }
+}
+
+.animate-pulse-orange {
+  animation: pulse-orange 2s ease-in-out infinite;
+}
+
+/* Professional card styles */
+.card-professional {
+  background: var(--white);
+  border: 1px solid var(--sand-dark);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 6px rgba(27, 54, 93, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card-professional:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(27, 54, 93, 0.15);
+  border-color: var(--orange);
+}
+
+/* Button styles */
+.btn-primary {
+  background: var(--navy);
+  color: var(--white);
+  border: 2px solid var(--navy);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--navy-deep);
+  border-color: var(--navy-deep);
+  box-shadow: 0 4px 12px rgba(27, 54, 93, 0.3);
+}
+
+.btn-secondary {
+  background: var(--orange);
+  color: var(--navy-deep);
+  border: 2px solid var(--orange);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--orange-warm);
+  border-color: var(--orange-warm);
+  box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--navy);
+  border: 2px solid var(--navy);
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: var(--navy);
+  color: var(--white);
+}
+
+/* Network graph styles */
+.network-node-project {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.network-node-project:hover {
+  filter: brightness(1.1);
+  stroke-width: 3px;
+}
+
+.network-node-person {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.network-node-person:hover {
+  filter: brightness(1.1);
+  stroke-width: 2px;
+}
+
+.network-link {
+  stroke: var(--sand-dark);
+  stroke-opacity: 0.6;
+  transition: stroke-opacity 0.2s ease;
+}
+
+.network-link:hover {
+  stroke-opacity: 1;
+  stroke: var(--orange);
+}
+
+/* Professional typography */
+.heading-primary {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.heading-secondary {
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.heading-tertiary {
+  font-size: 1.875rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.text-professional {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--gray-cool);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .heading-primary {
+    font-size: 2.5rem;
+  }
+  
+  .heading-secondary {
+    font-size: 2rem;
+  }
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Focus styles for accessibility */
+.focus-visible:focus {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection styles */
+::selection {
+  background-color: rgba(212, 165, 116, 0.3);
+  color: var(--navy-deep);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--sand-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sand-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--orange);
+}
+
+/* Loading states */
+.skeleton {
+  background: linear-gradient(90deg, var(--sand) 25%, var(--sand-dark) 50%, var(--sand) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Professional spacing utilities */
+.section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.container-professional {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* Project category colors */
+.category-pm-policy {
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  color: var(--white);
+}
+
+.category-ux-design {
+  background: linear-gradient(135deg, var(--orange), var(--orange-warm));
+  color: var(--navy-deep);
+}
+
+/* Status indicators */
+.status-completed {
+  background: #48BB78;
+  color: white;
+}
+
+.status-ongoing {
+  background: var(--orange);
+  color: var(--navy-deep);
+}
+
+.status-paused {
+  background: var(--gray-cool);
+  color: white;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .card-professional {
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+}
+
